@@ -1,6 +1,6 @@
 import './App.scss';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Front from './Components/Frontpage/Front';
+import Front from './Components/Front';
 
 
 function App() {
