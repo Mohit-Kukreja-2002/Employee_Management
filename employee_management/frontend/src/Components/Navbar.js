@@ -1,8 +1,11 @@
 import { Link } from 'react-router-dom';
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap";
+import Login from './Login';
+import React from 'react';
 
 export default function Navigation() {
+  const [modalShow, setModalShow] = React.useState(false);
   return (
     <>
       <nav className="navbar navbar-expand-lg bg-light">
@@ -20,11 +23,13 @@ export default function Navigation() {
                 <Link className="nav-link" to="/about">about</Link>
               </li>
             </ul>
-            <form className="d-flex" role="search">
-              <Link to="/login">
-                <button className="btn btn-outline-success me-3 ms-1" type="submit">Login</button>
-              </Link>
-            </form>
+            <button type="button" class="btn btn-primary" onClick={() => setModalShow(true)}>
+              Login
+            </button>
+              <Login
+                show={modalShow}
+                onHide={() => setModalShow(false)}
+              />
           </div>
         </div>
       </nav>
