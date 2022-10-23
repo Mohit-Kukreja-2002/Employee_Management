@@ -1,16 +1,16 @@
 import React from 'react'
-import Home from '../Manager/Home';
-import About from '../Application_Frontpage/About';
-import Login from '../Application_Frontpage/Login';
-// import Navigation from '../Navbar/NavBar';
+import Home from './Home';
+import About from '../About';
+import Login from '../Login';
+import Navigation from '../Navbar';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 // import Alert from '../Alert';
 
-export default function Front() {
+export default function ManagerInterface() {
   return (
     <Router>
       <div className="App">
-        {/* <Navigation/> */}
+        <Navigation/>
         {/* <Alert/> */}
         <Routes>
           <Route exact path='/' element={<Home/>} />

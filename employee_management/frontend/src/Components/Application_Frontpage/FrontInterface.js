@@ -1,11 +1,11 @@
 import React from 'react'
 import Home from './Home';
-import About from '../About/About';
-import Login from '../Login/Login';
+import About from '../About';
+import Login from '../Login';
 import Navigation from '../Navbar';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-export default function Front() {
+export default function FrontInterface() {
   return (
     <Router>
       <div className="App">
