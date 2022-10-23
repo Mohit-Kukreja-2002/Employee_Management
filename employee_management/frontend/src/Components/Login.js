@@ -17,7 +17,7 @@ export default function Login(props) {
       centered
     >
       <Modal.Body className="forms">
-        <div className={isActive ? 'is-active form-wrapper' : 'form-wrapper'} onClick={handleClick}>
+        <div className={isActive ? 'form-wrapper' : 'is-active form-wrapper'} onClick={handleClick}>
           <button type="button" className="switcher switcher-login">
             Login
             <span className="underline"></span>
@@ -37,7 +37,7 @@ export default function Login(props) {
             <button type="submit" className="btn-login">Login</button>
           </form>
         </div>
-        <div className={isActive ? 'form-wrapper' : 'is-active form-wrapper'} onClick={handleClick}>
+        <div className={isActive ? 'is-active form-wrapper' : 'form-wrapper'} onClick={handleClick}>
           <button type="button" className="switcher switcher-signup">
             Sign Up
             <span className="underline"></span>
