@@ -1,11 +1,13 @@
-import './App.scss';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import Front from './Components/Frontpage/Front';
-
+// import Navigation from './Components/Navbar';
+// import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+// import Front from "./Components/Application_Frontpage/Front";
+import Manager_Interface from './Components/Manager/Manager_Interface'
 
 function App() {
   return (
-    <Front/>
+    <>
+      <Manager_Interface/>
+    </>
   );
 }
 

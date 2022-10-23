@@ -2,7 +2,7 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { Link } from 'react-router-dom';
-
+import Button from 'react-bootstrap/Button';
 
 export default function Navigation() {
   return (
@@ -17,9 +17,10 @@ export default function Navigation() {
               style={{ maxHeight: '100px' }}
               navbarScroll
             >
-              <Nav.Link  as={Link} to="/">Home</Nav.Link>
-              <Nav.Link  as={Link} to="/about">About</Nav.Link>
-              <Nav.Link  as={Link} to="/login">Login</Nav.Link>
+              <Nav.Link as={Link} to="/about">About</Nav.Link>
+              <Nav.Link as={Link} to="/apply">Apply for Leave</Nav.Link>
+              <Nav.Link as={Link} to="/pastleaves">Previous Leaves</Nav.Link>
+              <Button variant="success">Logout</Button>{' '}
             </Nav>
           </Navbar.Collapse>
         </Container>
