@@ -1,4 +1,4 @@
-import './Login.css'
+import '../css/Login.css'
 import Modal from 'react-bootstrap/Modal';
 import { useState } from 'react';
 
@@ -26,11 +26,11 @@ export default function Login(props) {
             <fieldset>
               <legend>Please, enter your email and password for login.</legend>
               <div className="input-block">
-                <label for="login-email">E-mail</label>
+                <label htmlFor="login-email">E-mail</label>
                 <input id="login-email" type="email" required />
               </div>
               <div className="input-block">
-                <label for="login-password">Password</label>
+                <label htmlFor="login-password">Password</label>
                 <input id="login-password" type="password" required />
               </div>
             </fieldset>
@@ -46,19 +46,19 @@ export default function Login(props) {
             <fieldset>
               <legend>Please, enter your email, password and password confirmation for sign up.</legend>
               <div className="input-block">
-                <label for="signup-email">E-mail</label>
+                <label htmlFor="signup-email">E-mail</label>
                 <input id="signup-email" type="email" required />
               </div>
               <div className="input-block">
-                <label for="signup-password">Password</label>
+                <label htmlFor="signup-password">Password</label>
                 <input id="signup-password" type="password" required />
               </div>
               <div className="input-block">
-                <label for="signup-password-confirm">Confirm password</label>
+                <label htmlFor="signup-password-confirm">Confirm password</label>
                 <input id="signup-password-confirm" type="password" required />
               </div>
             </fieldset>
-            <button type="submit" classNameName="btn-signup">Continue</button>
+            <button type="submit" className="btn-signup">Continue</button>
           </form>
         </div>
       </Modal.Body>

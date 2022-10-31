@@ -4,6 +4,10 @@ const { body, validationResult } = require('express-validator');
 const fetchuser =require('../middleware/fetchuser')
 const Profile = require('../models/Profile');
 
+function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
 // Route 1: Get all the employees managed by the manager: GET "/api/profile/fetchEmployees". Login required.
 router.get('/fetchEmployees',fetchuser,async(req,res)=>{
     try{
@@ -39,7 +43,10 @@ router.post('/addEmployee',fetchuser,[
         return res.status(400).json({ errors: errors.array() });
     }
 
-    const {employee_name,salary,position,age}=req.body
+    let {employee_name,salary,position,age}=req.body
+    
+    employee_name=capitalizeFirstLetter(employee_name)
+    position=capitalizeFirstLetter(position)
 
     const employee=new Profile({
         employee_name,position,age,salary,managed_by:req.user.id
@@ -71,6 +78,27 @@ router.put('/updateEmployee/:id',fetchuser,async(req,res)=>{
 
     employee= await Profile.findByIdAndUpdate(req.params.id, {$set: updatedEmployee},{new:true})
     res.json({employee});
+})
+
+// Route 5: Delete an employee. Using DELETE "/api/profile/deleteEmployee".Login required.
+router.delete('/deleteEmployee/:id',fetchuser,async(req,res)=>{
+    try{
+        // Find the employee to be deleted and delete it
+        let employee=await Profile.findById(req.params.id)
+        if(!employee) {
+            return res.status (404).send("Not Found"); 
+        }
+        if (employee.managed_by.toString() !== req.user.id) { 
+            return res.status (401).send("Not Allowed"); 
+        }
+
+        employee= await Profile.findByIdAndDelete(req.params.id)
+        res.json({"Success":"The employee data has been deleted", employee:employee});
+    }
+    catch(error){
+        console.error(error.message)
+        res.status(500).json("Internal Server Error")
+    }
 })
 
 // Exporting the overall router

@@ -31,7 +31,7 @@ export default function Home() {
         <div className='container my-3' id="putcol">
 
           <div className="card" style={{ width: "18rem" }} onMouseOver={mousePlaced} onMouseLeave={mouseOut} >
-            {/* <img src={require('./images/service1.jpg')} className="card-img-top" alt="..." /> */}
+            <img src={require('../images/service1.jpg')} className="card-img-top" alt="..." />
             <div className="card-body">
               <h5 className="card-title">SERVICES</h5>
               <p className="card-text"  >We have continiously dominated in managing leave system for different organisations...</p>
@@ -39,7 +39,7 @@ export default function Home() {
             </div>
           </div>
           <div className="card" style={{ width: "18rem" }} onMouseOver={mousePlaced} onMouseLeave={mouseOut} >
-            {/* <img src={require('./images/vision.jpg')} className="card-img-top" alt="..." /> */}
+            <img src={require('../images/vision.jpg')} className="card-img-top" alt="..." />
             <div className="card-body" >
               <h5 className="card-title">VISION</h5>
               <p className="card-text"  >principles that not only company employees respect, but are principles that our customers....</p>
@@ -47,7 +47,7 @@ export default function Home() {
             </div>
           </div>
           <div className="card " style={{ width: "18rem" }} onMouseOver={mousePlaced} onMouseLeave={mouseOut} >
-            {/* <img src={require('./images/contact.jpg')} className="card-img-top" alt="..." /> */}
+            <img src={require('../images/contact.jpg')} className="card-img-top" alt="..." />
             <div className="card-body">
               <h5 className="card-title">CONTACT US</h5>
               <p className="card-text"  >You can contact us by writing a mail to us
@@ -61,15 +61,16 @@ export default function Home() {
 
       <div className='container my-3' style={{ width: '100%' }}>
         <h4 className='center'>Our Users</h4>
-        {/* <marquee> */}
-          {/* <img src={require('./images/cd1.png')} alt='...' className='mx-5' /> */}
-          {/* <img src={require('./images/cd2.png')} alt='...' className='mx-5' /> */}
-          {/* <img src={require('./images/cd3.png')} alt='...' className='mx-5' /> */}
-          {/* <img src={require('./images/cd4.png')} alt='...' className='mx-5' /> */}
-          {/* <img src={require('./images/cd5.png')} alt='...' className='mx-5' /> */}
-          {/* <img src={require('./images/cd6.png')} alt='...' className='mx-5' /> */}
-          {/* <img src={require('./images/cd7.png')} alt='...' className='mx-5' /> */}
-        {/* </marquee> */}
+        {/* eslint-disable-next-line */}
+        <marquee>
+          <img src={require('../images/cd1.png')} alt='...' className='mx-5' />
+          <img src={require('../images/cd2.png')} alt='...' className='mx-5' />
+          <img src={require('../images/cd3.png')} alt='...' className='mx-5' />
+          <img src={require('../images/cd4.png')} alt='...' className='mx-5' />
+          <img src={require('../images/cd5.png')} alt='...' className='mx-5' />
+          <img src={require('../images/cd6.png')} alt='...' className='mx-5' />
+          <img src={require('../images/cd7.png')} alt='...' className='mx-5' />
+        </marquee>
       </div>
 
       {/* Why Section Portion  */}
@@ -91,7 +92,7 @@ export default function Home() {
         <div className='container my-3' id="putcol">
           <div className="card" style={{ width: "18rem", backgroundColor: "#aad8ff" }}
             onMouseOver={lowerCardEve} onMouseOut={LowerCardOut}>
-            {/* <img src={require('./images/data.jpg')} className="card-img-top" alt="..." /> */}
+            {/* <img src={require('../images/data.jpg')} className="card-img-top" alt="..." /> */}
             <div className="card-body">
               <h5 className="card-title">Data-driven Consulting</h5>
               <p className="card-text" >Our benchmarking and consulting ensures policies are competitive, inclusive, and robust to even unexpected leave situations.</p>
@@ -100,7 +101,7 @@ export default function Home() {
           </div>
           <div className="card" style={{ width: "18rem", backgroundColor: "#aad8ff" }}
             onMouseOver={lowerCardEve} onMouseOut={LowerCardOut}>
-            {/* <img src={require('./images/rating.jpg')} className="card-img-top" alt="..." /> */}
+            {/* <img src={require('../images/rating.jpg')} className="card-img-top" alt="..." /> */}
             <div className="card-body">
               <h5 className="card-title">World Class Experience</h5>
               <p className="card-text">Our leave experts ensure stakeholders have the information they need when they need it, making the experience stress-free.</p>
@@ -109,7 +110,7 @@ export default function Home() {
           </div>
           <div className="card" style={{ width: "18rem", backgroundColor: "#aad8ff" }}
             onMouseOver={lowerCardEve} onMouseOut={LowerCardOut}>
-            {/* <img src={require('./images/enter-ready.jpg')} className="card-img-top" alt="..." /> */}
+            {/* <img src={require('../images/enter-ready.jpg')} className="card-img-top" alt="..." /> */}
             <div className="card-body">
               <h5 className="card-title">Enterprise Ready Security</h5>
               <p className="card-text">We prioritize our customer’s trust, security, and privacy by ensuring enterprise ready security.</p>

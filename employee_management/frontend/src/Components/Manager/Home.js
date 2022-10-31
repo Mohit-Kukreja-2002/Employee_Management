@@ -1,17 +1,17 @@
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
 import userimage from '../images/user.png'
-import './manager.css'
-import "bootstrap/dist/css/bootstrap.min.css";
-import "bootstrap/dist/js/bootstrap";
 import EmployeeCards from './EmployeeCards';
-import './manager.css'
-// import Navigation from '../Navbar/NavBar'
-// import Home from './Home';
-// import About from '../Application_Frontpage/About';
-// import Login from '../Application_Frontpage/Login';
-// import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import profileContext from '../ContextAPI/profileContext';
+import '../css/manager.css'
 
 export default function Manager_Home() {
+  const context = useContext(profileContext);
+  const { profiles, getProfiles } = context;
+
+  useEffect(() => {
+    getProfiles()
+  }, // eslint-disable-next-line
+    [])
   return (
     <>
       <div className='container center-block text-center' style={{ marginTop: '6rem' }}>
@@ -25,47 +25,21 @@ export default function Manager_Home() {
         </div>
       </div>
 
-      <hr className='hori'/>
+      <hr className='hori' />
 
       <h2>You are managing </h2>
 
+
       <div className="container my-3 text-center">
         <div className='card-group col justify-content-center'>
-          <div className="mx-3 card-width-14rem">
-          <EmployeeCards />
-          </div>
-          <div className="mx-3 card-width-14rem" >
-          <EmployeeCards />
-          </div>
-          <div className="mx-3 card-width-14rem" >
-          <EmployeeCards />
-          </div>
-          <div className="mx-3 card-width-14rem" >
-          <EmployeeCards />
-          </div><div className="mx-3 card-width-14rem" >
-          <EmployeeCards />
-          </div>
-          <div className="mx-3 card-width-14rem" >
-          <EmployeeCards />
-          </div><div className="mx-3 card-width-14rem" >
-          <EmployeeCards />
-          </div><div className="mx-3 card-width-14rem" >
-          <EmployeeCards />
-          </div>
-        </div>
-          {//!this.state.loading && 
-            // articles.map((element) => {
-              // return 
-              // <div className="col-md-4" key={element.url}>
-              //   <EmployeeCards title={element.title} description={element.description} src={element.urlToImage} newsUrl={element.url} author={element.author} date={element.publishedAt} name={element.source.name} />                </div>
-              // })
-              // {/* } */
-            }
-      </div>
 
-      {/* <div className='d-flex text-center align-middle'>
-        
-      </div> */}
+          {profiles.map((profile) => {
+            return <div key={profile._id} className="mx-3 card-width-14rem">
+              <EmployeeCards profile={profile} />
+            </div>
+          })}
+        </div>
+      </div>
     </>
   )
 }
