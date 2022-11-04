@@ -11,7 +11,7 @@ export default function LandingPage() {
           <img className='frame-img' src={require('./images/softwaredesign.webp')} alt='Entering and Leaving' />
         </div>
         <div className="left">
-          <h2 className='landing-page-h2'>ManageIng - Your One Stop Solution For Management Tasks</h2>
+          <h2>ManageIng - Your One Stop Solution For Management Tasks</h2>
           <p>Collaborate, manage projects, and reach new productivity peaks. From high rises to the home office, the way your team works is unique accomplish it all with ManageIng.
           </p>
           <p><button type="button" className="custom-btn btn-6" onClick={() => setModalShow(true)}>Get Started Now</button>
