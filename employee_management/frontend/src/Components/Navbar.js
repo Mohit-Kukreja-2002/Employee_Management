@@ -1,14 +1,22 @@
 import { Link } from 'react-router-dom';
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap";
-import Login from './Login/Login';
-import React from 'react';
+import { loggedContext } from './ContextAPI/Loggedin';
+import Login from './Login';
+import React,{useContext} from 'react';
 
-export default function Navigation(props) {
+export default function Navigation() {
+  const context = useContext(loggedContext);
+  const{status,setstatus}=context;
   const [modalShow, setModalShow] = React.useState(false);
+
+  const getout=()=>{
+    localStorage.removeItem('token');
+    setstatus("false");
+  }
   return (
     <>
-      <nav className="navbar navbar-expand-lg bg-light">
+      <nav className="navbar navbar-expand-lg bg-light" style={{position:"sticky", top:"0px"}}>
         <div className="container-fluid">
           <Link className="navbar-brand " to="/">Company Name</Link>
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -22,20 +30,24 @@ export default function Navigation(props) {
               <li className="nav-item">
                 <Link className="nav-link" to="/about">About</Link>
               </li>
-              <li className={`nav-item ${props.manager?"":"d-none"}`}>
+              <li className={`nav-item ${(status==="true")?"":"d-none"}`}>
                 <Link className="nav-link" to="/manage">Manage</Link>
               </li>
-              <li className={`nav-item ${props.manage?"":"d-none"}`}>
-                <Link className="nav-link" to="/addEmployee"></Link>
+              <li className={`nav-item ${(status==="true")?"":"d-none"}`}>
+                <Link className="nav-link" to="/addEmployee">Add a Employee</Link>
               </li>
             </ul>
-            <button type="button" className="btn btn-primary" onClick={() => setModalShow(true)}>
+            <button type="button" className={`btn btn-primary ${(status==="true")?"d-none":""}`} onClick={() => setModalShow(true)}>
               Login
             </button>
               <Login
                 show={modalShow}
                 onHide={() => setModalShow(false)}
               />
+
+            <button type="button" className={`btn btn-primary ${(status==="true")?"":"d-none"}`} onClick={getout}>
+              Logout
+            </button>            
           </div>
         </div>
       </nav>

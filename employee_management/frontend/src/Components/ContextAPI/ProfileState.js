@@ -11,7 +11,7 @@ const ProfileState = (props) => {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
-                "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjM1NTA4ZjJkOWMyMGVkZTM3M2ZkZTUzIn0sImlhdCI6MTY2NjUxNzMxMH0.osTJsGKeuA9kHr96pWX5AiceG88ccfWJ7o0ofj-u9es"
+                "auth-token": localStorage.getItem('token')
             }
         });
         const json = await response.json();
@@ -24,7 +24,7 @@ const ProfileState = (props) => {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjM1NTA4ZjJkOWMyMGVkZTM3M2ZkZTUzIn0sImlhdCI6MTY2NjUxNzMxMH0.osTJsGKeuA9kHr96pWX5AiceG88ccfWJ7o0ofj-u9es"
+                "auth-token": localStorage.getItem('token')
             },
             body: JSON.stringify({ employee_name, age, salary, position })
         });
@@ -36,7 +36,7 @@ const ProfileState = (props) => {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
-                "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjM1NTA4ZjJkOWMyMGVkZTM3M2ZkZTUzIn0sImlhdCI6MTY2NjUxNzMxMH0.osTJsGKeuA9kHr96pWX5AiceG88ccfWJ7o0ofj-u9es"
+                "auth-token": localStorage.getItem('token')
             },
         });
        console.log("Deleting the employee with the id "+id);
@@ -50,7 +50,7 @@ const ProfileState = (props) => {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
-                "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjM1NTA4ZjJkOWMyMGVkZTM3M2ZkZTUzIn0sImlhdCI6MTY2NjUxNzMxMH0.osTJsGKeuA9kHr96pWX5AiceG88ccfWJ7o0ofj-u9es"
+                "auth-token": localStorage.getItem('token')
             },
             body: JSON.stringify({position,age,salary})
         });

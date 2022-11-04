@@ -1,13 +1,16 @@
-// import Navigation from './Components/Navbar';
-// import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-// import FrontInterface from "./Components/Application_Frontpage/FrontInterface";
-import ManagerInterface from './Components/Manager/ManagerInterface'
+import LoggedinState from './Components/ContextAPI/Loggedin';
+import ProfileState from './Components/ContextAPI/ProfileState';
+import Interface from './Components/Interface';
+
 
 function App() {
   return (
     <>
-      {/* <FrontInterface/> */}
-      <ManagerInterface/>
+      <LoggedinState>
+        <ProfileState>
+          <Interface />
+        </ProfileState>
+      </LoggedinState>
     </>
   );
 }

@@ -1,6 +1,6 @@
 import React from 'react'
-import userimage from '../images/user.png'
-import '../css/EmployeeCards.css'
+import userimage from './images/user.png'
+import './css/EmployeeCards.css'
 
 const EmployeeCards = (props) => {
   const { profile } = props;

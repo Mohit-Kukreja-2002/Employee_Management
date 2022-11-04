@@ -10,7 +10,6 @@ const JWT_SECRET="MohitUjjawalPrince()";
 
 // ROUTE 1: Create a User using : POST "/api/auth/createUser". Doesn't require Auth 
 router.post('/createUser', [
-
     // Applying the Validations
     // body('name',"The name field cannot be blank").isLength({ min: 1 }),
     body('email',"Please enter a valid mail").isEmail(),
@@ -20,13 +19,13 @@ router.post('/createUser', [
     //if validation check fails ==>Returning Bad request and the corresponding errors.
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-        return res.status(400).json({ errors: errors.array() });
+        return res.status(400).json({ success:false,errors: errors.array() });
     }
     
     // Checking if a user with the given mail exists?
     let user= await User.findOne({email: req.body.email})
     if(user){
-        return res.status(400).json({error: "Sorry a User with this email already exists"})
+        return res.status(400).json({success:false,error: "Sorry a User with this email already exists"})
     }
     
     // Hashing and Salting the password
@@ -49,16 +48,16 @@ router.post('/createUser', [
         }
         const authtoken=jwt.sign(data,JWT_SECRET);
 
-        res.json({authtoken});
+        res.json({success:true,authtoken});
     } 
     catch (error) {
         console.error(error.message);
-        res.status(500).send("Some Error occurred");
+        res.status(500).send({success:false,error:"Some Error occurred"});
     }
 })
 
 
-// ROUTE 2: Create a User using : POST "/api/auth/login". Doesn't require Auth 
+// ROUTE 2: Login a User : POST "/api/auth/login". Doesn't require Auth 
 router.post('/login', [
     
     // Applying the Validations
@@ -69,7 +68,7 @@ router.post('/login', [
     //if validation check fails ==>Returning Bad request and the corresponding errors.
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-        return res.status(400).json({ errors: errors.array() });
+        return res.status(400).json({success:false,errors: errors.array() });
     }
     
     const {email,password} = req.body;
@@ -79,13 +78,13 @@ router.post('/login', [
         // Checking if a user with the given mail exists?
         let user= await User.findOne({email})
         if(!user){
-            return res.status(400).json({error: "Please Login with correct credentials."})
+            return res.status(400).json({success:false,error: "Please Login with correct credentials."})
         }
 
         // Comparing the password and checking if it is true.
         const password_compare=await bcrypt.compare(password,user.password);
         if(!password_compare){
-            return res.status(400).json({error: "Please Login with correct credentials."})
+            return res.status(400).json({success:false,error: "Please Login with correct credentials."})
         }
 
         // If both credentials are correct => send the payload
@@ -96,11 +95,11 @@ router.post('/login', [
         }
         const authtoken=jwt.sign(data,JWT_SECRET);
 
-        res.json({authtoken});
+        res.json({success:true,authtoken});
     } 
     catch (error) {
         console.error(error.message);
-        res.status(500).send("Some Error occurred");
+        res.status(500).send({success:false,error:"Some Error occurred"});
     }
 })
 
@@ -109,11 +108,11 @@ router.post('/getUser', fetchuser, async(req,res)=>{
     try{
         let userId = req.user.id
         const user = await User.findById(userId).select("-password");
-        res.send(user);
+        res.send({success:true,user});
     }
     catch(error){
         console.error(error.message);
-        res.status(500).send("Internal Server Error")
+        res.status(500).send({success:false,error:"Internal Server Error"})
     }
 })
 

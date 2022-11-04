@@ -1,15 +1,23 @@
 import React, { useContext, useEffect } from 'react'
-import userimage from '../images/user.png'
+import userimage from './images/user.png'
 import EmployeeCards from './EmployeeCards';
-import profileContext from '../ContextAPI/profileContext';
-import '../css/manager.css'
+import profileContext from './ContextAPI/profileContext';
+import {useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import './css/managerhome.css'
 
-export default function Manager_Home() {
+export default function ManagerHome() {
   const context = useContext(profileContext);
   const { profiles, getProfiles } = context;
 
+  let navigator= useNavigate();
   useEffect(() => {
-    getProfiles()
+    if(localStorage.getItem('token')){
+      getProfiles()
+    }
+    else{
+      navigator('/')
+    }
   }, // eslint-disable-next-line
     [])
   return (
@@ -26,8 +34,11 @@ export default function Manager_Home() {
       </div>
 
       <hr className='hori' />
+      
 
-      <h2>You are managing </h2>
+      <h2 style={profiles.length>0?{display:'block'}:{display:'none'}}>You are managing </h2>
+      <h2 style={profiles.length>0?{display:'none'}:{display:'block'}}>Currently, You are not managing anyone. </h2>
+      <Link to='/addemployee' style={{textDecoration:'none'}}><button type="button" className="custom-btn btn-6 m-auto" style={profiles.length>0?{display:'none'}:{display:'block'}}> Add an employee </button></Link>
 
 
       <div className="container my-3 text-center">
