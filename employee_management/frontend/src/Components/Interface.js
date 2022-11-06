@@ -12,6 +12,7 @@ const Interface = () => {
         if(localStorage.getItem('token')){
             setstatus("true");
         }
+        // eslint-disable-next-line
     },[status]);
     
     return (

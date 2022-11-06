@@ -7,15 +7,13 @@ import AddEmployee from './AddEmployeeForm';
 import ManagerHome from './ManagerHome';
 
 export default function ManagerInterface() {
-  const manager = true;
   return (
         <Router>
           <div className="App">
-            <Navigation manage={manager} />
+            <Navigation />
             {/* <Alert/> */}
             <Routes>
               <Route exact path='/' element={<ManagerHome />} />
-              <Route exact path='/managerhome' element={<ManagerHome />} />
 
               <Route exact path='/about' element={<About />} />
               <Route exact path='/addEmployee' element={<AddEmployee />} />

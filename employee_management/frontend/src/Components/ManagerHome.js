@@ -19,9 +19,10 @@ export default function ManagerHome() {
       navigator('/')
     }
   }, // eslint-disable-next-line
-    [])
-  return (
-    <>
+  [])
+  console.log(profiles)
+    return (
+      <>
       <div className='container center-block text-center' style={{ marginTop: '6rem' }}>
         <div className='d-inline-block mx-auto my-3' >
           <img className='.img-fluid .img-thumbnail' src={userimage} style={{ height: '17rem', borderRadius: '50%' }} alt="" />
@@ -43,7 +44,6 @@ export default function ManagerHome() {
 
       <div className="container my-3 text-center">
         <div className='card-group col justify-content-center'>
-
           {profiles.map((profile) => {
             return <div key={profile._id} className="mx-3 card-width-14rem">
               <EmployeeCards profile={profile} />

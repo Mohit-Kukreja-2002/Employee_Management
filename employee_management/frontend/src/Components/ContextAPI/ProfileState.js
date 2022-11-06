@@ -15,20 +15,22 @@ const ProfileState = (props) => {
             }
         });
         const json = await response.json();
-        console.log(json);
+        // console.log(json);
         setProfiles(json)
     }
 
-    const addProfile = async (employee_name, age, salary, position = "SDE-1") => {
+    const addProfile = async (suffix,gender,employee_name,date_ofBirth,date_ofJoining,position,employee_email,age,phoneNumber,country,zip_code, salary) => {
         const response = await fetch(`${host}/api/profile/addEmployee`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                "auth-token": localStorage.getItem('token')
+                'auth-token': localStorage.getItem('token').toString()
             },
-            body: JSON.stringify({ employee_name, age, salary, position })
+            body: JSON.stringify({ suffix,gender,employee_name,date_ofBirth,date_ofJoining,position,employee_email,age,phoneNumber,country,zip_code, salary})
         });
+        const json= await response.json();
         console.log("Adding a new employee", response)
+        setProfiles(profiles.concat(json))
     }
 
     const deleteProfile = async(id)=>{

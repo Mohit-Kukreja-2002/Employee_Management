@@ -1,7 +1,7 @@
 import './css/Login.css'
 import Modal from 'react-bootstrap/Modal';
 import { useState,useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import { loggedContext } from "./ContextAPI/Loggedin";
 
 // import { Link } from 'react-router-dom';
@@ -14,7 +14,7 @@ export default function Login(props) {
 
   const host = "http://localhost:5000"
   const [isActive, setIsActive] = useState(false);
-  let navigate = useNavigate();
+  // let navigate = useNavigate();
 
   const handleClick = event => {
     setIsActive(current => !current);
@@ -72,7 +72,7 @@ export default function Login(props) {
   };
 
   return (
-    <Modal
+    <Modal style={{"marginTop":"27px"}}
       {...props}
       size="lg"
       aria-labelledby="contained-modal-vcenter"

@@ -15,7 +15,7 @@ router.get('/fetchEmployees',fetchuser,async(req,res)=>{
         res.json(employees)
     }
     catch(error){
-        res.status(500).send("Internal Server Error");
+        res.status(500).send({success:true,error:"Internal Server Error"});
     }
 })
 
@@ -35,25 +35,28 @@ router.post('/addEmployee',fetchuser,[
     body('employee_name','The name field cannot be blank').isLength({min:1}),
     body('age',"Please enter a valid age").isNumeric(),
     body('salary',"Please enter valid salary").isNumeric(),
+    body('employee_email','The name field cannot be blank').isLength({min:1}),
 ] ,async(req,res)=>{
 
     //if validation check fails ==>Returning Bad request and the corresponding errors.
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-        return res.status(400).json({ errors: errors.array() });
+        return res.status(400).json({success:true,errors: errors.array() });
     }
 
-    let {employee_name,salary,position,age}=req.body
+    let {employee_name,suffix,age,gender,country,zip_code,date_ofBirth,date_ofJoining,phoneNumber,employee_email,salary,position}=req.body
     
     employee_name=capitalizeFirstLetter(employee_name)
     position=capitalizeFirstLetter(position)
+    country=capitalizeFirstLetter(country)
+    
 
     const employee=new Profile({
-        employee_name,position,age,salary,managed_by:req.user.id
+        employee_name,suffix,gender,country,zip_code,date_ofBirth,date_ofJoining,phoneNumber,employee_email,salary,position,age,managed_by:req.user.id
     })
 
     const savedEmployee=await employee.save()
-    res.json(savedEmployee)
+    res.json({success:true,savedEmployee})
 })
 
 // Route 4: Updating an employee details. Using PUT "/api/profile/updateEmployee".Login required.
@@ -69,15 +72,15 @@ router.put('/updateEmployee/:id',fetchuser,async(req,res)=>{
     // Find the employee to be updated and update it 
     let employee = await Profile.findById(req.params.id); 
     if(!employee) {
-        return res.status (404).send("Not Found"); 
+        return res.status (404).send({success:true,error:"Not Found"}); 
     }
 
     if (employee.managed_by.toString() !== req.user.id) { 
-        return res.status (401).send("Not Allowed"); 
+        return res.status (401).send({success:true,error:"Not Allowed"}); 
     }
 
     employee= await Profile.findByIdAndUpdate(req.params.id, {$set: updatedEmployee},{new:true})
-    res.json({employee});
+    res.json({success:true,employee});
 })
 
 // Route 5: Delete an employee. Using DELETE "/api/profile/deleteEmployee".Login required.
@@ -86,18 +89,18 @@ router.delete('/deleteEmployee/:id',fetchuser,async(req,res)=>{
         // Find the employee to be deleted and delete it
         let employee=await Profile.findById(req.params.id)
         if(!employee) {
-            return res.status (404).send("Not Found"); 
+            return res.status (404).send({success:false,error:"Not Found"}); 
         }
         if (employee.managed_by.toString() !== req.user.id) { 
-            return res.status (401).send("Not Allowed"); 
+            return res.status (401).send({success:true,error:"Not Allowed"}); 
         }
 
         employee= await Profile.findByIdAndDelete(req.params.id)
-        res.json({"Success":"The employee data has been deleted", employee:employee});
+        res.json({success:true, employee});
     }
     catch(error){
         console.error(error.message)
-        res.status(500).json("Internal Server Error")
+        res.status(500).json({success:true,error:"Internal Server Error"})
     }
 })
 

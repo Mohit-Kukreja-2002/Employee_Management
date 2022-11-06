@@ -97,7 +97,10 @@ export default function LandingPage() {
                   </div>
                   <div className="footer-social-icon">
                     <span>Follow us</span>
-                    <a href="/"><i className="fab fa-facebook-f facebook-bg"></i></a>
+                    <a rel="noreferrer" href="https://www.linkedin.com/in/mohit-kukreja-347683229/" target={"_blank"}><img src={require("./images/Linkedin.png")} style={{width:"30px"}} alt="" /></a>
+                    <a rel="noreferrer" href="https://www.linkedin.com/in/imprince26/" target={"_blank"}><img src={require("./images/Linkedin.png")} style={{width:"30px"}} alt="" /></a>
+                    <a rel="noreferrer" href="https://www.linkedin.com/in/ujjwal-kumar-pandey-145612237/" target={"_blank"}><img src={require("./images/Linkedin.png")} style={{width:"30px"}} alt="" /></a>
+
                     <a href="/"><i className="fab fa-twitter twitter-bg"></i></a>
                     <a href="/"><i className="fab fa-google-plus-g google-bg"></i></a>
                   </div>

@@ -16,7 +16,7 @@ export default function Navigation() {
   }
   return (
     <>
-      <nav className="navbar navbar-expand-lg bg-light" style={{position:"sticky", top:"0px"}}>
+      <nav className="navbar navbar-expand-lg bg-light" style={{position:"sticky", top:"0px",zIndex:"10000"}}>
         <div className="container-fluid">
           <Link className="navbar-brand " to="/">Company Name</Link>
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
