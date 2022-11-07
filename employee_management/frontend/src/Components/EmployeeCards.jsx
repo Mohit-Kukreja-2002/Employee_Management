@@ -1,6 +1,7 @@
 import React from 'react'
 import userimage from './images/user.png'
 import './css/EmployeeCards.css'
+import { Link } from 'react-router-dom';
 
 const EmployeeCards = (props) => {
   const { profile } = props;
@@ -16,7 +17,7 @@ const EmployeeCards = (props) => {
             <div className="card-footer">
               <p className="card-text text-muted" style={{ fontFamily: 'Fuzzy Bubbles , cursive', fontWeight: 'bolder' }}>{profile.position}</p>
             </div>
-            <a href="/" className="btn btn-sm btn-dark my-2 mb-0">Details</a>
+            <Link to="/employeeDetails"><button className="btn btn-sm btn-dark my-2 mb-0" onClick={localStorage.setItem('e-id',profile._id)}>Details</button></Link>
           </div>
         </div>
       </div>

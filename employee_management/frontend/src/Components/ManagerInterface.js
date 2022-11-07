@@ -5,6 +5,7 @@ import Manage from './Manage'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import AddEmployee from './AddEmployeeForm';
 import ManagerHome from './ManagerHome';
+import EmployeeDetails from './EmployeeDetails';
 
 export default function ManagerInterface() {
   return (
@@ -14,9 +15,9 @@ export default function ManagerInterface() {
             {/* <Alert/> */}
             <Routes>
               <Route exact path='/' element={<ManagerHome />} />
-
               <Route exact path='/about' element={<About />} />
               <Route exact path='/addEmployee' element={<AddEmployee />} />
+              <Route exact path='/employeeDetails' element={<EmployeeDetails/>} />
               <Route exact path='/manage' element={<Manage />} />
             </Routes>
           </div>
