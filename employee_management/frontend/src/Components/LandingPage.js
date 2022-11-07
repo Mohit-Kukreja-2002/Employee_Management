@@ -73,16 +73,16 @@ export default function LandingPage() {
                   <i className="fas fa-phone"></i>
                   <div className="cta-text-home">
                     <h4>Call us</h4>
-                    <span>+91 9999222333</span>
+                    <span>+91 8950982811</span>
                   </div>
                 </div>
               </div>
               <div className="col-xl-4 col-md-4 mb-30">
                 <div className="single-cta">
-                  <i className="far fa-envelope-open"></i>
+                  <i className="far fa-envelope-open"></i>s
                   <div className="cta-text-home">
                     <h4>Mail us</h4>
-                    <span>mail@info.com</span>
+                    <span>weare305restishistory@gmail.com</span>
                   </div>
                 </div>
               </div>
@@ -101,8 +101,8 @@ export default function LandingPage() {
                     <a rel="noreferrer" href="https://www.linkedin.com/in/imprince26/" target={"_blank"}><img src={require("./images/Linkedin.png")} style={{width:"30px"}} alt="" /></a>
                     <a rel="noreferrer" href="https://www.linkedin.com/in/ujjwal-kumar-pandey-145612237/" target={"_blank"}><img src={require("./images/Linkedin.png")} style={{width:"30px"}} alt="" /></a>
 
-                    <a href="/"><i className="fab fa-twitter twitter-bg"></i></a>
-                    <a href="/"><i className="fab fa-google-plus-g google-bg"></i></a>
+                    <a href="#home-top"><i className="fab fa-twitter twitter-bg"></i></a>
+                    <a href="#home-top"><i className="fab fa-google-plus-g google-bg"></i></a>
                   </div>
                 </div>
               </div>
@@ -135,7 +135,7 @@ export default function LandingPage() {
                   </div>
                   <div className="subscribe-form">
                     <form action="#">
-                      <input type="text" placeholder="group305iiitS@gmail.com" readOnly />
+                      <input type="text" placeholder="Sector-15,Sonipat,131001" readOnly />
                       {/* <button><i className="fa-regular fa-paper-plane-top"></i></button> */}
                     </form>
                   </div>

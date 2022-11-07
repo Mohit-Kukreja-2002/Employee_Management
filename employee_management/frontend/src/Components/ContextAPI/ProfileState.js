@@ -38,7 +38,7 @@ const ProfileState = (props) => {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
-                "auth-token": localStorage.getItem('token')
+                "auth-token": localStorage.getItem('token').toString()
             },
         });
        console.log("Deleting the employee with the id "+id);

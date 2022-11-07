@@ -5,21 +5,37 @@ import './css/employeeDetails.css'
 
 const EmployeeDetails = () => {
     const context = useContext(profileContext);
-    const { profiles } = context;
+    const { profiles, deleteProfile } = context;
 
-    let element = profiles[0];
-    console.log(element)
+    // console.log(element)
+    var element = profiles[0];
+    console.log(localStorage.getItem('e-id'))
     for (let index = 0; index < profiles.length; index++) {
-        if (element._id === localStorage.getItem('e-id')) {
+        if (profiles[index]._id === localStorage.getItem('e-id')) {
             element = profiles[index];
             break;
         }
     }
-    let tempname = null;
+
+    localStorage.removeItem('e-id');
+    
+    let tempname = "";
     let anothername = element.employee_name.split(" ")
     for (let index = 1; index < anothername.length; index++) {
         tempname = anothername[index] + " ";
     }
+
+    const Deletethis = () => {
+        deleteProfile(element._id)
+        localStorage.removeItem('e-id')
+        navigator('/')
+    }
+
+    // const GoBack = () => {
+    //     localStorage.removeItem('e-id')
+    //     navigator('/')
+    // }
+
     return (
         <>
             <main className="e-details-profile e-details-body">
@@ -31,15 +47,15 @@ const EmployeeDetails = () => {
                         </a>
                     </aside>
                     <section className="e-details-profile-info">
-                        <h1 className="e-details-first-name">{element.employee_name.split(" ")[0]}</h1>
+                        <h1 className="e-details-first-name">{`${element.suffix} ${element.employee_name.split(" ")[0]}`}</h1>
                         <h1 className="e-details-second-name">{tempname}</h1>
-                        <h2>{element.position}</h2>
+                        <h2 style={{ "marginLeft": "50px" }}>{element.position}</h2>
 
                         <aside className="e-details-social-media-icons">
                             <p>
                                 {/* eslint-disable-next-line */}
                                 <a rel="noreferrer" href="#" className='mx-2'>
-                                    <i class="fa fa-envelope"></i>
+                                    <i className="fa fa-envelope"></i>
                                 </a>
                                 {element.employee_email}
                             </p>
@@ -53,15 +69,15 @@ const EmployeeDetails = () => {
                                 {element.phoneNumber}
                             </p>
                         </aside>
-                        <aside className="e-details-social-media-icons">
-                            <p>
-                                {/* eslint-disable-next-line */}
-                                <a rel="noreferrer" href="#" className='mx-2'>
-                                    <i className="fa fa-globe"></i>
-                                </a>
-                                {element.country}
-                            </p>
-                        </aside>
+                        {/* <aside className="e-details-social-media-icons"> */}
+                        {/* <p> */}
+                        {/* eslint-disable-next-line */}
+                        {/* <a rel="noreferrer" href="#" className='mx-2'> */}
+                        {/* <i className="fa fa-globe"></i> */}
+                        {/* </a> */}
+                        {/* {element.country} */}
+                        {/* </p> */}
+                        {/* </aside> */}
                         <aside className="e-details-social-media-icons">
                             <p>
                                 {/* eslint-disable-next-line */}
@@ -70,6 +86,16 @@ const EmployeeDetails = () => {
                                 </a>
                                 {element.zip_Code}
                             </p>
+                        </aside>
+
+                        <aside className="e-details-social-media-icons">
+                            {/* eslint-disable-next-line */}
+                            <a rel="noreferrer" href="#" className='mx-2'>
+                                <i className="fa fa-pen"></i>
+                            </a>
+                            <a rel="noreferrer" href="/" className='mx-2' onClick={Deletethis}>
+                                <i className="fa fa-trash"></i>
+                            </a>
                         </aside>
 
                     </section>
@@ -81,8 +107,9 @@ const EmployeeDetails = () => {
                     <p><strong>{element.age}</strong> Age</p>
                     <p><strong>{element.country}</strong> Country</p>
                 </section>
-                <button className="e-details-icon e-details-close"></button>
-                {localStorage.removeItem('e-id')}
+                {/* <a href="/" onClick={GoBack}>
+                    <button className="e-details-icon e-details-close mt-5" style={{ "width": "100px" }}>Go Back</button>
+                </a> */}
             </main>
         </>
     )

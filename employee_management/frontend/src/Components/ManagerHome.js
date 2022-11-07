@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 import './css/managerhome.css'
 
 export default function ManagerHome() {
+  localStorage.removeItem('e-id')
   const context = useContext(profileContext);
   const { profiles, getProfiles } = context;
 
@@ -14,23 +15,26 @@ export default function ManagerHome() {
   useEffect(() => {
     if(localStorage.getItem('token')){
       getProfiles()
+      localStorage.removeItem('e-id')
     }
     else{
+      localStorage.removeItem('e-id')
       navigator('/')
     }
   }, // eslint-disable-next-line
   [])
-  console.log(profiles)
+  // console.log(profiles)
     return (
       <>
+      {localStorage.removeItem("e-id")}
       <div className='container center-block text-center' style={{ marginTop: '6rem' }}>
         <div className='d-inline-block mx-auto my-3' >
           <img className='.img-fluid .img-thumbnail' src={userimage} style={{ height: '17rem', borderRadius: '50%' }} alt="" />
         </div>
         <div className='d-inline-block text-center align-middle'>
-          <h1 className='mx-5'>Hey Usename</h1>
-          <h3 className='mx-5 text-muted my-2' >Role at Company Name</h3>
-          <h4 className='mx-5 text-muted my-2'>position</h4>
+          <h1 className='mx-5'>Hey Mohit</h1>
+          <h3 className='mx-5 text-muted my-2' >Manager at IIIT Sonepat</h3>
+          <h4 className='mx-5 text-muted my-2'>Since 2021</h4>
         </div>
       </div>
 
@@ -46,7 +50,7 @@ export default function ManagerHome() {
         <div className='card-group col justify-content-center'>
           {profiles.map((profile) => {
             return <div key={profile._id} className="mx-3 card-width-14rem">
-              <EmployeeCards profile={profile} />
+              <EmployeeCards id={profile._id} profile={profile} />
             </div>
           })}
         </div>

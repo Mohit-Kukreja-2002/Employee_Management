@@ -181,7 +181,6 @@ h1.e-details-second-name {
 
 .e-details-arrow {
   flex: 0 1 75px;
-  background-image: url("https://zephyo.github.io/22Days/code/3/graphics/arrow.svg");
 }
 
 .e-details-right {
@@ -193,7 +192,6 @@ h1.e-details-second-name {
 }
 
 .e-details-close {
-  background-image: url("https://zephyo.github.io/22Days/code/3/graphics/close.svg");
   position: absolute;
   top: 5px;
 

@@ -11,14 +11,15 @@ export default function Navigation() {
   const [modalShow, setModalShow] = React.useState(false);
 
   const getout=()=>{
+    localStorage.removeItem('e-id');
     localStorage.removeItem('token');
     setstatus("false");
   }
   return (
     <>
-      <nav className="navbar navbar-expand-lg bg-light" style={{position:"sticky", top:"0px",zIndex:"10000"}}>
+      <nav className="navbar navbar-expand-lg bg-light" style={{position:"sticky", top:"0px",zIndex:"10000",opacity:"0.8"}}>
         <div className="container-fluid">
-          <Link className="navbar-brand " to="/">Company Name</Link>
+          <Link style={{"fontFamily":"'Kalam', cursive","fontSize":"2rem"}} className="navbar-brand mx-2" to="/">ManageIng</Link>
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
           </button>
@@ -37,7 +38,7 @@ export default function Navigation() {
                 <Link className="nav-link" to="/addEmployee">Add a Employee</Link>
               </li>
             </ul>
-            <button type="button" className={`btn btn-primary ${(status==="true")?"d-none":""}`} onClick={() => setModalShow(true)}>
+            <button type="button" className={`btn btn-dark px-3 ${(status==="true")?"d-none":""}`} onClick={() => setModalShow(true)}>
               Login
             </button>
               <Login
@@ -45,7 +46,7 @@ export default function Navigation() {
                 onHide={() => setModalShow(false)}
               />
 
-            <button type="button" className={`btn btn-primary ${(status==="true")?"":"d-none"}`} onClick={getout}>
+            <button type="button" className={`btn btn-dark px-3 ${(status==="true")?"":"d-none"}`} onClick={getout}>
               Logout
             </button>            
           </div>

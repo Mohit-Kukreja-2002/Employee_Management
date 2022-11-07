@@ -17,7 +17,7 @@ const EmployeeCards = (props) => {
             <div className="card-footer">
               <p className="card-text text-muted" style={{ fontFamily: 'Fuzzy Bubbles , cursive', fontWeight: 'bolder' }}>{profile.position}</p>
             </div>
-            <Link to="/employeeDetails"><button className="btn btn-sm btn-dark my-2 mb-0" onClick={localStorage.setItem('e-id',profile._id)}>Details</button></Link>
+            <Link to="/employeeDetails" onClick={localStorage.setItem('e-id',props.id)}><button className="btn btn-sm btn-dark my-2 mb-0" onClick={localStorage.setItem('e-id',props.id)}>Details</button></Link>
           </div>
         </div>
       </div>
