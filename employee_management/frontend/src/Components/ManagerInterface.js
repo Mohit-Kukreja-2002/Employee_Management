@@ -6,7 +6,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import AddEmployee from './AddEmployeeForm';
 import ManagerHome from './ManagerHome';
 import EmployeeDetails from './EmployeeDetails';
-// import EditEmployeeDetails from './EditEmployeeDetails';
+import EditEmployeeDetails from './EditEmployeeDetails';
 
 export default function ManagerInterface() {
   return (
@@ -20,7 +20,7 @@ export default function ManagerInterface() {
               <Route exact path='/addEmployee' element={<AddEmployee />} />
               <Route exact path='/employeeDetails' element={<EmployeeDetails/>} />
               <Route exact path='/manage' element={<Manage />} />
-              {/* <Route exact path='/editEmployeeDetail' element={<EditEmployeeDetails/>}/> */}
+              <Route exact path='/editEmployeeDetail' element={<EditEmployeeDetails/>}/>
             </Routes>
           </div>
         </Router>

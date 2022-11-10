@@ -47,14 +47,14 @@ const ProfileState = (props) => {
        console.log(response)
     }
 
-    const updateProfile=async(id,position,age,salary)=>{
+    const updateProfile=async(id,position,age,phoneNumber,country,zip_Code,salary)=>{
         const response = await fetch(`${host}/api/profile/updateEmployee/${id}`,{
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
                 "auth-token": localStorage.getItem('token')
             },
-            body: JSON.stringify({position,age,salary})
+            body: JSON.stringify({position,age,salary,phoneNumber,country,zip_Code})
         });
         console.log(response)
         // const json=response.json()
@@ -64,6 +64,9 @@ const ProfileState = (props) => {
                 element.position= position; 
                 element.age = age; 
                 element.salary = salary;
+                element.phoneNumber =phoneNumber;
+                element.country=country;
+                element.zip_Code=zip_Code;
             }
         }
     }

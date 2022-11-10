@@ -71,14 +71,14 @@ export default function Form() {
                       <br />
                       <div className="mb-4 pb-2" >
                         <select className="select" name="suffix" value={details.suffix} onChange={changing} style={{ "marginRight": "42%" }}>
-                          <option value="1">Mr.</option>
-                          <option value="2">Mrs.</option>
-                          <option value="3">Dr.</option>
+                          <option value="Mr.">Mr.</option>
+                          <option value="Mrs.">Mrs.</option>
+                          <option value="Dr.">Dr.</option>
                         </select>
                         <select className="select" name='gender' value={details.gender} onChange={changing}>
                           <option value="1">Gender</option>
-                          <option value="2">Male</option>
-                          <option value="3">Female</option>
+                          <option value="Male">Male</option>
+                          <option value="Female">Female</option>
                         </select>
                       </div>
 

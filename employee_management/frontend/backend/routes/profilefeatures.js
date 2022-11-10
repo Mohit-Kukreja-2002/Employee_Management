@@ -61,13 +61,17 @@ router.post('/addEmployee',fetchuser,[
 
 // Route 4: Updating an employee details. Using PUT "/api/profile/updateEmployee".Login required.
 router.put('/updateEmployee/:id',fetchuser,async(req,res)=>{
-    const {position,age,salary}=req.body
+    const {position,age,salary,phoneNumber,country,zip_Code}=req.body
 
     // Allowing to change position age and salary only
     const updatedEmployee={};
     if(position){updatedEmployee.position=position};
     if(age){updatedEmployee.age=age};
     if(salary){updatedEmployee.salary=salary};
+    if(phoneNumber){updatedEmployee.phoneNumber=phoneNumber};
+    if(country){updatedEmployee.country=country};
+    if(zip_Code){updatedEmployee.zip_Code=zip_Code};
+
 
     // Find the employee to be updated and update it 
     let employee = await Profile.findById(req.params.id); 

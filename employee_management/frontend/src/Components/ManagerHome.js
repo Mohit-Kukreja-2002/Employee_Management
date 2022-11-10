@@ -3,22 +3,28 @@ import userimage from './images/user.png'
 import EmployeeCards from './EmployeeCards';
 import profileContext from './ContextAPI/profileContext';
 import {useNavigate } from 'react-router-dom';
+import { eid_Context } from './ContextAPI/EidState';
 import { Link } from 'react-router-dom';
 import './css/managerhome.css'
 
 export default function ManagerHome() {
-  localStorage.removeItem('e-id')
+  
   const context = useContext(profileContext);
   const { profiles, getProfiles } = context;
+
+  const employeeidcontext = useContext(eid_Context)
+  const { eid_status, set_eidstatus} = employeeidcontext;
 
   let navigator= useNavigate();
   useEffect(() => {
     if(localStorage.getItem('token')){
       getProfiles()
-      localStorage.removeItem('e-id')
+      if(eid_status==="true"){
+        localStorage.removeItem("e-id");
+        set_eidstatus("false");
+      }
     }
     else{
-      localStorage.removeItem('e-id')
       navigator('/')
     }
   }, // eslint-disable-next-line
@@ -26,7 +32,6 @@ export default function ManagerHome() {
   // console.log(profiles)
     return (
       <>
-      {localStorage.removeItem("e-id")}
       <div className='container center-block text-center' style={{ marginTop: '6rem' }}>
         <div className='d-inline-block mx-auto my-3' >
           <img className='.img-fluid .img-thumbnail' src={userimage} style={{ height: '17rem', borderRadius: '50%' }} alt="" />
